@@ -1,6 +1,6 @@
 # Easier-BF
 
-Easier-BF is a simplified compiled version of BrainF\*ck. While it remains compatible with vanilla BrainF\*ck, Easier-BF aims to streamline the language by removing some of the more complex aspects, such as intricate pointer management.
+Easier-BF is a simplified compiled version of BrainF\*ck. While it remains compatible with vanilla BrainF\*ck, Easier-BF aims to streamline the language by automating some of the more complex aspects, such as intricate pointer management.
 
 ## Installation
 
