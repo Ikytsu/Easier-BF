@@ -6,9 +6,7 @@
 #include <streambuf>
 #include <iostream>
 #include <filesystem>
-#include <regex>
 #include <vector>
-#include <cmath>
 #include <algorithm>
 #include <stdexcept>
 #include <sstream>
@@ -19,7 +17,7 @@ static std::string help_output = "-file [filename] : specify a file for compilat
     	"\n-version : indicate version of the compiler";
 static std::string version_output = "work in progress :)";
 static std::string debug1_output = "starting compilation of";
-static std::string debug2_output = "enter in the code optimization";
+static std::string debug2_output = "loading the syntax configuration file...";
 static std::string debug3_output = "no indicated file, terminating the process";
 
 
@@ -28,7 +26,7 @@ static std::string multiplearg_warning = "Warning: an argument has been put mult
 static std::string unknownarg_warning = "Warning: an unknown arg has been put, ignoring it"; 
 
 //Errors
-static std::string filenullptr_error = "Error: -file at the end of the args";
+static std::string filenullptr_error = "Error: nothing after -file ";
 static std::string unexistingfile_error = "Error: The file doesn't exists";
 static std::string incorrectextenstion_error = "Error: Incorrect extension, the correct ones are .bf, .ebf, .b and .nbf";
 
