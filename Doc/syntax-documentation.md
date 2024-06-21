@@ -7,6 +7,7 @@
 - `>`: Move the pointer to the next cell.
 - `<`: Move the pointer to the previous cell.
 - `.`: Output the ASCII or integer value depending on `$`, which is explained in the Easier-BF Addons section.
+- `,`: Input the ASCII value into the current pointer.
 
 ## Easier-BF Addons
 
