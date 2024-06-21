@@ -20,4 +20,4 @@
 
 ## Editable
 
-You can customize the syntax and properties. For example, `\\` can be modified to add two elements instead of one. Everything is editable.
+You can customize the syntax and properties. For example, `\` can be modified to add two elements instead of one. Everything is editable.
