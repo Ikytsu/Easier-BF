@@ -18,4 +18,13 @@ std::map<std::string, int> my_map = {
     {"table_remove", 13}
 };/*/
 
-std::vector load-config()
+std::vector<std::string> load_config()
+{
+	
+
+	std::vector<std::string> config_infos = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
+
+	
+	
+	return config_infos;
+}
