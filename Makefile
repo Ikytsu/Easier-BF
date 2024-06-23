@@ -1,6 +1,6 @@
 GPLUS=g++
 
-SRC=src/main.cpp src/load-config.cpp
+SRC=src/main.cpp src/load-config.cpp src/generate-c-code.cpp
 OBJ=$(SRC:.c=.o)
 EXEC=bin/ebf
 
