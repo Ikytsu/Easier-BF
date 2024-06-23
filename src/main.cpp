@@ -62,6 +62,7 @@ void start_compilation(int argc, char * argv[])
 			throw std::runtime_error(gccnotinstalled_error);
 		}
 	
+		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_start_compilation_message << " " << File_name_string << std::endl;
 
 		std::filesystem::path pathObj(File_name_charpointer);
@@ -80,12 +81,21 @@ void start_compilation(int argc, char * argv[])
 		std::ifstream t(File_name_string);
 		std::string code((std::istreambuf_iterator<char>(t)),
 		std::istreambuf_iterator<char>());
+
+		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_check_config_file_message << std::endl;
-		load_config(debug);
+		
+		std::vector<std::string> config_loaded = load_config(debug);
+
+		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_optimizing_code_message << std::endl;
 
+
+		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_generating_c_code_message << std::endl;
 
+
+		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_compiling_c_code_message << std::endl;
 	}
 	else
