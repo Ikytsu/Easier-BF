@@ -25,7 +25,7 @@ static std::string debug_no_indicated_file_message = "no indicated file, termina
 static std::string debug_check_gcc_message = "checking if gcc is installed...";
 static std::string debug_check_config_file_message = "checking the config file...";
 static std::string debug_check_config_file_notexist_message = "no config file found, creating one...";
-static std::string debug_generating_c_code_message = "generating the C equivalent code..."
+static std::string debug_generating_c_code_message = "generating the C equivalent code...";
 static std::string debug_compiling_c_code_message = "compiling the C code...";
 //Warnings
 static std::string multiplearg_warning = "Warning: an argument has been put multiple times, ignoring it and the next if it's -file";
@@ -38,6 +38,6 @@ static std::string incorrectextenstion_error = "Error: Incorrect extension, the 
 static std::string gccnotinstalled_error = "Error: gcc is needed for the compilation, you need to install it and make it accessible on your PATH/command";
 
 //Functions definitions
-
+std::vector<std::string> load_config(bool debug);
 
 #endif
