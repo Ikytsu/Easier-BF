@@ -20,12 +20,11 @@ static std::string version_output = "work in progress :)";
 
 //Debugs 
 static std::string debug_start_compilation_message = "starting compilation of";
-static std::string debug_optimizing_code_message = "optimizing the ebf code...";
 static std::string debug_no_indicated_file_message = "no indicated file, terminating the process";
 static std::string debug_check_gcc_message = "checking if gcc is installed...";
 static std::string debug_check_config_file_message = "checking the config file...";
 static std::string debug_check_config_file_notexist_message = "no config file found, creating one...";
-static std::string debug_generating_c_code_message = "generating the C equivalent code...";
+static std::string debug_generating_c_code_message = "optimizing the ebf code and generating the C equivalent code...";
 static std::string debug_compiling_c_code_message = "compiling the C code...";
 //Warnings
 static std::string multiplearg_warning = "Warning: an argument has been put multiple times, ignoring it and the next if it's -file";
@@ -41,5 +40,6 @@ static std::string gccnotinstalled_error = "Error: gcc is needed for the compila
 
 //Functions definitions
 std::vector<std::string> load_config(bool debug);
+void generate_c_code(std::string code, std::vector<std::string> config, bool debug);
 
 #endif
