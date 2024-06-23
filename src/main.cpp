@@ -88,12 +88,9 @@ void start_compilation(int argc, char * argv[])
 		std::vector<std::string> config_loaded = load_config(debug);
 
 		if(debug)std::cout << "-------------------------" << std::endl;
-		if(debug)std::cout << debug_optimizing_code_message << std::endl;
-
-
-		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_generating_c_code_message << std::endl;
 
+		generate_c_code(code, config_loaded, debug);
 
 		if(debug)std::cout << "-------------------------" << std::endl;
 		if(debug)std::cout << debug_compiling_c_code_message << std::endl;
