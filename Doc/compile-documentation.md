@@ -2,7 +2,7 @@
 
 -file `filename` : specify a file for compilation
 
--debug : indicate all steps of the compilation
+-debug : indicate all steps of the compilation and generate the C equivalent file
 
 -version : indicate version of the compiler
 
