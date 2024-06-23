@@ -78,10 +78,10 @@ void start_compilation(int argc, char * argv[])
 			throw std::runtime_error(unexistingfile_error);
 		}
 		std::ifstream t(File_name_string);
-		std::string textinfile((std::istreambuf_iterator<char>(t)),
+		std::string code((std::istreambuf_iterator<char>(t)),
 		std::istreambuf_iterator<char>());
 		if(debug)std::cout << debug_check_config_file_message << std::endl;
-
+		load_config(debug);
 		if(debug)std::cout << debug_optimizing_code_message << std::endl;
 
 		if(debug)std::cout << debug_generating_c_code_message << std::endl;
