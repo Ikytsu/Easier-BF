@@ -30,7 +30,9 @@ static std::string debug_compiling_c_code_message = "compiling the C code...";
 //Warnings
 static std::string multiplearg_warning = "Warning: an argument has been put multiple times, ignoring it and the next if it's -file";
 static std::string unknownarg_warning = "Warning: an unknown arg has been put, ignoring it"; 
-
+static std::string nosemicolon_warning = "Warning: no semicolon, ignoring";
+static std::string unknownconfig_warning = "Warning: an unknown config has been detected, read the documentation to correct this";
+static std::string incorrectconfigvalue_warning = "Warning: an incorrect config value has been detected, read the documentation to correct this";
 //Errors
 static std::string filenullptr_error = "Error: nothing after -file ";
 static std::string unexistingfile_error = "Error: The file doesn't exists";
