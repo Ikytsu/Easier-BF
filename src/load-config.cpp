@@ -38,6 +38,26 @@ std::string get_end_string(int index, const std::string& str)
     return endstring;
 }
 
+bool isint(std::string number)
+{
+	try 
+	{
+	  std::stoi(number);
+	  for(char character : number)
+	  {
+	  	if(character == '.')
+	  	{
+	  		return false;
+	  	}
+	  }
+	  return true;
+	}
+	catch(const std::exception& err) 
+	{
+	  return false;
+	} 
+}
+
 std::vector<std::string> load_config(bool debug)
 {
 	std::vector<std::string> config_infos = {"+", "-", ">", "<", ".", ",", "$", "#", "\\", "*", "&", "/", "%", "1", "1", "ASCII", "1", "1"};
@@ -92,89 +112,211 @@ std::vector<std::string> load_config(bool debug)
 						falledintocolon = true;
 						if(temp_string == "add")
 						{
-							//std::cout << get_end_string(i + 1, lineconfig) << std::endl; 			
+							config_infos[0] = get_end_string(i + 1, lineconfig);		
 						}
 						else if(temp_string == "substract")
 						{
-							
+							config_infos[1] = get_end_string(i + 1, lineconfig);	
 						}
 						else if(temp_string == "move_next")
 						{
-							
+							config_infos[2] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "move_previous")
 						{
-							
+							config_infos[3] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "output")
 						{
-							
+							config_infos[4] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "input")
 						{
-							
+							config_infos[5] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "output_type_switcher")
 						{
-							
+							config_infos[6] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "assign_char")
 						{
-							
+							config_infos[7] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "table_create")
 						{
-							
+							config_infos[8] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "table_gochild")
 						{
-							
+							config_infos[9] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "table_goparent")
 						{
-							
+							config_infos[10] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "table_delete")
 						{
-							
+							config_infos[11] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "table_remove")
 						{
-							
+							config_infos[12] = get_end_string(i + 1, lineconfig);
 						}
 						else if(temp_string == "add_subtract_value")
 						{
-							
+							std::string info = get_end_string(i + 1, lineconfig);
+							if(isint(info))
+							{
+								config_infos[13] = info;
+							}
+							else
+							{
+								std::cout << incorrectconfigvalue_warning << ": \"" + lineconfig + "\"" << std::endl;
+							}						
 						}
 						else if(temp_string == "move_value")
 						{
-							
+							std::string info = get_end_string(i + 1, lineconfig);
+							if(isint(info))
+							{
+								config_infos[14] = info;
+							}
+							else
+							{
+								std::cout << incorrectconfigvalue_warning << ": \"" + lineconfig + "\"" << std::endl;
+							}	
 						}
 						else if(temp_string == "output_type_switcher_default")
 						{
-							
+							std::string info = get_end_string(i + 1, lineconfig);
+							if(info == "ASCII" || info == "INT")
+							{
+								config_infos[15] = info;
+							}
+							else
+							{
+								std::cout << incorrectconfigvalue_warning << ": \"" + lineconfig + "\"" << std::endl;
+							}
 						}
 						else if(temp_string == "table_create_value")
 						{
-							
+							std::string info = get_end_string(i + 1, lineconfig);
+							if(isint(info))
+							{
+								config_infos[16] = info;
+							}
+							else
+							{
+								std::cout << incorrectconfigvalue_warning << ": \"" + lineconfig + "\"" << std::endl;
+							}	
 						}
 						else if(temp_string == "table_remove_value")
 						{
-							
+							std::string info = get_end_string(i + 1, lineconfig);
+							if(isint(info))
+							{
+								config_infos[17] = info;
+							}
+							else
+							{
+								std::cout << incorrectconfigvalue_warning << ": \"" + lineconfig + "\"" << std::endl;
+							}	
 						}
 						else
 						{
-							
+							std::cout << unknownconfig_warning << ": \"" + lineconfig + "\"" << std::endl;
 						}
+						break;
 					}
-					if(!falledintocolon)
+					if(!falledintocolon && i == lineconfig.size() - 1)
 					{
-						
+						std::cout << nosemicolon_warning << ": \"" + lineconfig + "\"" << std::endl;				
 					}
+				}
 			}
+		}		
+	}
+	if(debug)
+	{
+		std::cout << "config result:" << std::endl;
+		int i = 0;
+		for(; i < config_infos.size() ; i++)
+		{
+			if(i == 0)
+			{
+				std::cout << "add: ";
 			}
+			else if(i == 1)
+			{
+				std::cout << "substract: ";
+			}
+			else if(i == 2)
+			{
+				std::cout << "move_next: ";
+			}
+			else if(i == 3)
+			{
+				std::cout << "move_previous: ";
+			}
+			else if(i == 4)
+			{
+				std::cout << "output: ";
+			}
+			else if(i == 5)
+			{
+				std::cout << "input: ";
+			}
+			else if(i == 6)
+			{
+				std::cout << "output_type_switcher: ";
+			}
+			else if(i == 7)
+			{
+				std::cout << "assign_char: ";
+			}
+			else if(i == 8)
+			{
+				std::cout << "table_create: ";
+			}
+			else if(i == 9)
+			{
+				std::cout << "table_gochild: ";
+			}
+			else if(i == 10)
+			{
+				std::cout << "table_goparent: ";
+			}
+			else if(i == 11)
+			{
+				std::cout << "table_delete: ";
+			}
+			else if(i == 12)
+			{
+				std::cout << "table_remove: ";
+			}
+			else if(i == 13)
+			{
+				std::cout << "add_subtract_value: ";
+			}
+			else if(i == 14)
+			{
+				std::cout << "move_value: ";
+			}
+			else if(i == 15)
+			{
+				std::cout << "output_type_switcher_default: ";
+			}
+			else if(i == 16)
+			{
+				std::cout << "table_create_value: ";
+			}
+			else if(i == 17)
+			{
+				std::cout << "table_remove_value: ";
+			}
+			std::cout << config_infos[i] << std::endl;
+		}
+	}
 	return config_infos;
-}	
-}
 }
 
