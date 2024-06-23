@@ -61,15 +61,17 @@ bool isint(std::string number)
 std::vector<std::string> load_config(bool debug)
 {
 	std::vector<std::string> config_infos = {"+", "-", ">", "<", ".", ",", "$", "#", "\\", "*", "&", "/", "%", "1", "1", "ASCII", "1", "1"};
-
+	
 	if(!std::filesystem::exists("config.txt"))
 	{
+		std::cout << debug_no_config_file_message << std::endl;
 		std::ofstream config_file("config.txt");
 		config_file << "";
 		config_file.close();
 	}
 	else
 	{
+		std::cout << debug_config_file_message << std::endl;
 		std::ifstream t("config.txt");
 		std::string textinconfigfile((std::istreambuf_iterator<char>(t)),
 		std::istreambuf_iterator<char>());
