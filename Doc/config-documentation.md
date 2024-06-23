@@ -1,6 +1,6 @@
 # Configuration File Guidelines
 
-To create a configuration file, name it `config.txt` and place it in the same directory as the compiler path.
+To create a configuration file, name it `config.txt` and place it in the same directory where you launch the compiler (config.txt is different for each folder where you launch the compiler).
 
 Separate each configuration declaration by a new line.
 
