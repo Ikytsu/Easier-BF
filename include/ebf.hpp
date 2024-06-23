@@ -26,6 +26,8 @@ static std::string debug_check_config_file_message = "checking the config file..
 static std::string debug_check_config_file_notexist_message = "no config file found, creating one...";
 static std::string debug_generating_c_code_message = "optimizing the ebf code and generating the C equivalent code...";
 static std::string debug_compiling_c_code_message = "compiling the C code...";
+static std::string debug_no_config_file_message = "no config file found, creating one...";
+static std::string debug_config_file_message = "config file found, using this one...";
 //Warnings
 static std::string multiplearg_warning = "Warning: an argument has been put multiple times, ignoring it and the next if it's -file";
 static std::string unknownarg_warning = "Warning: an unknown arg has been put, ignoring it"; 
@@ -37,7 +39,7 @@ static std::string filenullptr_error = "Error: nothing after -file ";
 static std::string unexistingfile_error = "Error: The file doesn't exists";
 static std::string incorrectextenstion_error = "Error: Incorrect extension, the correct ones are .bf, .ebf, .b and .nbf";
 static std::string gccnotinstalled_error = "Error: gcc is needed for the compilation, you need to install it and make it accessible on your PATH/command";
-
+static std::string noclosedloop_error = "Error: every loop are not closed";
 //Functions definitions
 std::vector<std::string> load_config(bool debug);
 void generate_c_code(std::string code, std::vector<std::string> config, bool debug);
