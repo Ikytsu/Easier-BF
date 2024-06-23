@@ -15,7 +15,7 @@ make
 Alternatively, you can compile it manually with `g++` by navigating to the parent directory and typing:
 
 ```
-g++ -o bin/ebf src/main.cpp
+g++ -o bin/ebf src/main.cpp src/load-config.cpp src/generate-c-code.cpp
 ```
 
 While this example uses `g++`, other compilers can be used, but their usage is not documented at this time.
