@@ -53,34 +53,54 @@ void start_compilation(int argc, char * argv[])
 
 	if(File_name_charpointer != nullptr)
 	{
-		if(debug)std::cout << debug1_output << " " << File_name_string << std::endl;
+		if(debug)std::cout << debug_check_gcc_message << std::endl;
+
+		int gccnotinstalled = std::system("gcc --version > /dev/null 2>&1");
+
+		if(gccnotinstalled) //gcc not installed
+		{
+			throw std::runtime_error(gccnotinstalled_error);
+		}
+	
+		if(debug)std::cout << "-------------------------" << std::endl;
+		if(debug)std::cout << debug_start_compilation_message << " " << File_name_string << std::endl;
 
 		std::filesystem::path pathObj(File_name_charpointer);
 		
 		std::string extension = pathObj.extension().string();
 		
-		if(extension == ".ebf" || extension == ".bf" || extension == ".b" || extension == ".nbf")
-		{
-			if(std::filesystem::exists(File_name_string))
-			{
-			    std::ifstream t(File_name_string);
-			    std::string textinfile((std::istreambuf_iterator<char>(t)),
-			    std::istreambuf_iterator<char>());
-			    if(debug)std::cout << debug2_output << std::endl;
-			}
-		    else
-		    {
-		    	throw std::runtime_error(unexistingfile_error);
-		    }
-		}
-		else
+		if(extension != ".ebf" && extension != ".bf" && extension != ".b" && extension != ".nbf") //not correct extension
 		{
 			throw std::runtime_error(incorrectextenstion_error);
 		}
+		
+		if(!std::filesystem::exists(File_name_string)) //file doesn't exist 
+		{
+			throw std::runtime_error(unexistingfile_error);
+		}
+		std::ifstream t(File_name_string);
+		std::string code((std::istreambuf_iterator<char>(t)),
+		std::istreambuf_iterator<char>());
+
+		if(debug)std::cout << "-------------------------" << std::endl;
+		if(debug)std::cout << debug_check_config_file_message << std::endl;
+		
+		std::vector<std::string> config_loaded = load_config(debug);
+
+		if(debug)std::cout << "-------------------------" << std::endl;
+		if(debug)std::cout << debug_optimizing_code_message << std::endl;
+
+
+		if(debug)std::cout << "-------------------------" << std::endl;
+		if(debug)std::cout << debug_generating_c_code_message << std::endl;
+
+
+		if(debug)std::cout << "-------------------------" << std::endl;
+		if(debug)std::cout << debug_compiling_c_code_message << std::endl;
 	}
 	else
 	{
-		if(debug)std::cout << debug3_output << std::endl;
+		if(debug)std::cout << debug_no_indicated_file_message << std::endl;
 	}
 }
 
