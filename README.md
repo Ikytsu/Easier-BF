@@ -27,4 +27,12 @@ The program transpile the ebf code into C code in order to compile the ebf code,
 
 You can download prebuilt binaries from the releases section. This method does not require g++ but gcc like mentionned on Dependency section.
 
+### Branches
+
+The main branch is for stable versions. The testing branch works, but its stability is not fully verified. The experimental branch is like testing, but sometimes contains unfinished code.
+
+Here is the update cycle:
+
+experimental -> testing -> main
+
 **Work in progress, does nothing really, wait for the actual real release**
